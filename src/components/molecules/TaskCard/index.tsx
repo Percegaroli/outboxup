@@ -1,3 +1,4 @@
+import { format } from 'date-fns';
 import { TypographySize } from "../../../enums/components/Typography/Size";
 import { TypographyWeight } from "../../../enums/components/Typography/Weight";
 import { TaskModel } from "../../../model/Task/TaskModel";
@@ -5,7 +6,7 @@ import Typography from "../../atoms/Typography"
 import { Card, CardHeader, MoreOptionsButton,  CardBody, CardFooter, BodyTypography,  LeftContainer, StyledOutlinedCircle } from './styles';
 import MoreIcon from '../../../assets/svgs/moreIcon.svg';
 import TaskCardActions from "../TaskCardActions";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
 interface Props {
   task: TaskModel
@@ -17,7 +18,10 @@ interface Props {
 const TaskCard = ({ task, className = '', closeTask, openTask }: Props) => {
   const { title, description , date, closed } = task;
   const [isShowingActions, setIsShowingActions ] = useState(false);
-
+  const formattedDate = useMemo(() => {
+    return format(date, "'Created' MMMM d','uuuu h':'mmbbb");
+  }, [date])
+ 
   return (
     <Card className={className}>
       <CardHeader>
@@ -52,7 +56,7 @@ const TaskCard = ({ task, className = '', closeTask, openTask }: Props) => {
           size={TypographySize.sm}
           weight={TypographyWeight.LIGHT}
         >
-          {date.toString()}
+          {formattedDate}
         </Typography>
       </CardFooter>
     </Card>

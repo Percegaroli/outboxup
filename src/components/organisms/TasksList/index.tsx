@@ -1,9 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useMemo, useState } from "react";
+import { TypographyColors } from "../../../enums/components/Typography/Colors";
+import { TypographySize } from "../../../enums/components/Typography/Size";
+import { TypographyWeight } from "../../../enums/components/Typography/Weight";
 import { TaskModel } from "../../../model/Task/TaskModel";
 import TaskCard from "../../molecules/TaskCard";
 import TextButton from "../../molecules/TextButton";
-import { ButtonsContainer, CardsContainer } from './styles';
+import { ButtonsContainer, CardsContainer, NoTasksLabel } from './styles';
 
 interface Props {
   tasks: Array<TaskModel>
@@ -23,8 +26,20 @@ const TasksList = ({className, tasks, closeTask, openTask}: Props) => {
     return activeFilter === 0 ? getActiveTasks() : getClosedTasks();
   }, [activeFilter, getClosedTasks, getActiveTasks, tasks]);
 
+  const renderNoTaskLabel = () => {
+    return (
+      <NoTasksLabel 
+      size={TypographySize.md}
+      weight={TypographyWeight.BOLD}
+      color={TypographyColors.PRIMARY}
+    >
+      No tasks
+    </NoTasksLabel>
+    )
+  }
+
   const renderTaskCards = () => {
-    return filteredTasks ? (
+    return (
       <CardsContainer>
         {filteredTasks.map(task => (
           <TaskCard 
@@ -35,7 +50,7 @@ const TasksList = ({className, tasks, closeTask, openTask}: Props) => {
           />
         ))}
       </CardsContainer>
-    ) : null;
+    )
   }
 
   return (
@@ -54,7 +69,7 @@ const TasksList = ({className, tasks, closeTask, openTask}: Props) => {
           active={activeFilter === 1}
         />
       </ButtonsContainer>
-      {renderTaskCards()}
+      { filteredTasks.length ? renderTaskCards() : renderNoTaskLabel()}
     </div>
   )
 }

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Typography from "../../atoms/Typography";
 
 export const ButtonsContainer = styled.div`
   display: flex;
@@ -13,4 +14,8 @@ export const CardsContainer = styled.div`
   & >:not(:first-child){
     margin-top: 3rem;
   }
+`;
+
+export const NoTasksLabel = styled(Typography)`
+  margin-top: 6rem;
 `;

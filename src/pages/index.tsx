@@ -1,7 +1,24 @@
 import Head from 'next/head'
+import { useState } from 'react';
+import { v4 } from 'uuid';
 import HomeTemplate from '../components/templates/HomeTemplate'
+import { NewTaskModel } from '../model/Task/NewTaskModel';
+import { TaskModel } from '../model/Task/TaskModel';
+
 
 export default function Home() {
+  const [ tasks, setTasks ] = useState<Array<TaskModel>>([]);
+
+  const saveNewTask = (newTask: NewTaskModel) => {
+    setTasks([
+      ...tasks,
+      {
+        ...newTask,
+        id: v4()
+      }
+    ])
+  }
+
   return (
     <div>
       <Head>
@@ -10,7 +27,10 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <HomeTemplate />
+      <HomeTemplate 
+        createTask={saveNewTask}
+        tasks={tasks}
+      />
     </div>
   )
 }

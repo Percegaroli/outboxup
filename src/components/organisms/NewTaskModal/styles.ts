@@ -9,6 +9,10 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   height: 100%;
+  
+  @media(max-width: ${props => props.theme.breakpoints.desktop}){
+    padding: 0 1.6rem;
+  }
 `;
 
 export const ModalContent = styled.div`

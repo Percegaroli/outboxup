@@ -1,7 +1,7 @@
 import React from 'react';
-import TextButton from '../../molecules/TextButton';
+import { TypographyWeight } from '../../../enums/components/Typography/Weight';
 import Logo from '../../atoms/Logo';
-import { StyledContainer } from './styles';
+import { StyledContainer, StyledButton } from './styles';
 interface Props {
   newTaskButtonAction: () => void
 }
@@ -10,9 +10,12 @@ const Header = ({ newTaskButtonAction }: Props) => {
   return (
     <StyledContainer>
       <Logo/>
-      <TextButton 
+      <StyledButton 
         text='New Task'
         onClick={newTaskButtonAction}
+        typographyProps={{
+          weight: TypographyWeight.SEMI_BOLD
+        }}
       />
     </StyledContainer>
   )

@@ -7,6 +7,8 @@ import { TaskModel } from "../../../model/Task/TaskModel";
 import NewTaskModal from '../../organisms/NewTaskModal';
 import { useState } from "react";
 import { NewTaskModel } from "../../../model/Task/NewTaskModel";
+import { TypographySize } from "../../../enums/components/Typography/Size";
+import { TypographyWeight } from "../../../enums/components/Typography/Weight";
 
 interface Props {
   tasks: Array<TaskModel>
@@ -24,7 +26,10 @@ const HomeTemplate = ({ tasks, createTask, closeTask, openTask }: Props) => {
         <Header newTaskButtonAction={() => setIsShowingNewTaskModal(true)}/>
         <Container>
           <TitleContainer>
-            <Typography>
+            <Typography
+              size={TypographySize.lg}
+              weight={TypographyWeight.BOLD}
+            >
               Hi there.
             </Typography>
           </TitleContainer>

@@ -5,8 +5,7 @@ import { TypographySize } from "../../../enums/components/Typography/Size";
 import { TypographyWeight } from "../../../enums/components/Typography/Weight";
 import { TaskModel } from "../../../model/Task/TaskModel";
 import TaskCard from "../../molecules/TaskCard";
-import TextButton from "../../molecules/TextButton";
-import { ButtonsContainer, CardsContainer, NoTasksLabel } from './styles';
+import { ButtonsContainer, CardsContainer, NoTasksLabel, OutlinedButton } from './styles';
 
 interface Props {
   tasks: Array<TaskModel>
@@ -56,17 +55,23 @@ const TasksList = ({className, tasks, closeTask, openTask}: Props) => {
   return (
     <div className = {className}>
       <ButtonsContainer>
-        <TextButton 
+        <OutlinedButton 
           text = 'To do'
           onClick={() => setActiveFilter(0)}
           variant='outlined'
           active={activeFilter === 0}
+          typographyProps={{
+            weight: TypographyWeight.SEMI_BOLD
+          }}
         />
-        <TextButton 
+        <OutlinedButton 
           text='Closed' 
           onClick={() => setActiveFilter(1)}
           variant='outlined'
           active={activeFilter === 1}
+          typographyProps={{
+            weight: TypographyWeight.SEMI_BOLD
+          }}
         />
       </ButtonsContainer>
       { filteredTasks.length ? renderTaskCards() : renderNoTaskLabel()}

@@ -1,9 +1,9 @@
 import InputBase from "../../atoms/InputBase"
-import { Card, CloseButton, CardHeader, Title, FormContainer, DescriptionInput } from './styles';
+import { Card, StyledButton, CloseButton, CardHeader, Title, FormContainer, DescriptionInput } from './styles';
 import { useState } from "react";
-import TextButton from "../TextButton";
 import { NewTaskModel } from "../../../model/Task/NewTaskModel";
 import CloseIcon from '../../../assets/svgs/closeIcon.svg';
+import { TypographyWeight } from "../../../enums/components/Typography/Weight";
 
 interface Props {
   className?: string
@@ -33,7 +33,7 @@ const NewTaskCard = ({className, createTask, closeModal}: Props) => {
         </CloseButton>
       </CardHeader>
       <FormContainer>
-        <Title>
+        <Title weight={TypographyWeight.BOLD}>
           New Task
         </Title>
         <InputBase
@@ -47,10 +47,13 @@ const NewTaskCard = ({className, createTask, closeModal}: Props) => {
           placeholder='Description'
           
         />
-        <TextButton 
+        <StyledButton 
           text='Save'
           onClick={onCreateNewTask}
           fullWidth
+          typographyProps={{
+            weight: TypographyWeight.SEMI_BOLD
+          }}
         />
       </FormContainer>
     </Card>

@@ -19,7 +19,10 @@ const NewTaskModal = ({createTask, isOpen, closeModal }: Props) => {
     <Container>
       <Overlay onClick={closeModal}/>
       <ModalContent>
-        <NewTaskCard createTask={onCreateTask}/>
+        <NewTaskCard 
+          createTask={onCreateTask}
+          closeModal={closeModal}
+        />
       </ModalContent>
     </Container>
   ) : null;

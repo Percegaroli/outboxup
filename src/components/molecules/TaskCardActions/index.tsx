@@ -21,7 +21,7 @@ const TaskCardActions = ({className, isOpen, closeTask, openTask, isTaskClosed}:
         >
           Close Task
         </Typography>
-    </Item>
+      </Item>
     ) : (
       <Item onClick={openTask}>
         <Typography 
@@ -30,7 +30,7 @@ const TaskCardActions = ({className, isOpen, closeTask, openTask, isTaskClosed}:
         >
           Open Task
         </Typography>
-    </Item>
+      </Item>
     )
   }
 

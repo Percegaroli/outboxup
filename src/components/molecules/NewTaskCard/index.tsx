@@ -8,9 +8,10 @@ import CloseIcon from '../../../assets/svgs/closeIcon.svg';
 interface Props {
   className?: string
   createTask: (task: NewTaskModel) => void 
+  closeModal: () => void
 }
 
-const NewTaskCard = ({className, createTask}: Props) => {
+const NewTaskCard = ({className, createTask, closeModal}: Props) => {
   const [ newTask, setNewTask] = useState<NewTaskModel>({
     description: '',
     title: '',
@@ -27,7 +28,7 @@ const NewTaskCard = ({className, createTask}: Props) => {
   return (
     <Card className={className}>
       <CardHeader >
-        <CloseButton>
+        <CloseButton onClick={closeModal}>
           <CloseIcon />
         </CloseButton>
       </CardHeader>

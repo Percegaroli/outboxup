@@ -11,7 +11,3 @@ export const StyledContainer = styled(Container)`
     padding-top: 6rem;
   }
 `;
-
-export const LogoContainer = styled.div`
-  display: flex;
-`;

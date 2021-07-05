@@ -1,10 +1,7 @@
 import React from 'react';
 import TextButton from '../../molecules/TextButton';
-import Typography from '../../atoms/Typography';
 import Logo from '../../atoms/Logo';
-import { StyledContainer, LogoContainer } from './styles';
-import { TypographyColors } from '../../../enums/components/Typography/Colors';
-
+import { StyledContainer } from './styles';
 interface Props {
   newTaskButtonAction: () => void
 }

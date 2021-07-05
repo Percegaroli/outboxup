@@ -1,9 +1,9 @@
-import Typography from "../../atoms/Typography";
 import InputBase from "../../atoms/InputBase"
-import { Card, CloseButton, CardHeader, FormContainer, DescriptionInput } from './styles';
+import { Card, CloseButton, CardHeader, Title, FormContainer, DescriptionInput } from './styles';
 import { useState } from "react";
 import TextButton from "../TextButton";
 import { NewTaskModel } from "../../../model/Task/NewTaskModel";
+import CloseIcon from '../../../assets/svgs/closeIcon.svg';
 
 interface Props {
   className?: string
@@ -27,13 +27,14 @@ const NewTaskCard = ({className, createTask}: Props) => {
   return (
     <Card className={className}>
       <CardHeader >
-        <CloseButton/> 
+        <CloseButton>
+          <CloseIcon />
+        </CloseButton>
       </CardHeader>
       <FormContainer>
-        <Typography>
+        <Title>
           New Task
-        </Typography>
-
+        </Title>
         <InputBase
           value={newTask.title}
           onChange={(event) => setNewTask({...newTask, title: event.target.value})}

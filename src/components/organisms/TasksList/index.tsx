@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { TaskModel } from "../../../model/Task/TaskModel";
-import Container from "../../atoms/Container";
 import TaskCard from "../../molecules/TaskCard";
 import TextButton from "../../molecules/TextButton";
 import { ButtonsContainer, CardsContainer } from './styles';
@@ -27,7 +26,7 @@ const TasksList = ({className, tasks}: Props) => {
   }
 
   return (
-    <Container className = {className}>
+    <div className = {className}>
       <ButtonsContainer>
         <TextButton 
           text = 'To do'
@@ -43,7 +42,7 @@ const TasksList = ({className, tasks}: Props) => {
         />
       </ButtonsContainer>
       {renderTaskCards()}
-    </Container>
+    </div>
   )
 }
 

@@ -13,6 +13,7 @@ export const CardHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 `;
 
 export const CardBody = styled.div`
@@ -35,7 +36,13 @@ export const StyledOutlinedCircle = styled(OutlinedCircle)`
   margin-right: 2rem;
 `;
 
-export const Menu = styled.div``; 
+export const MoreOptionsButton = styled.button`
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  position: relative;
+`; 
 
 export const BodyTypography = styled(Typography)`
   line-height: 1.62;

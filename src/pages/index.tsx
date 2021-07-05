@@ -14,9 +14,23 @@ export default function Home() {
       ...tasks,
       {
         ...newTask,
-        id: v4()
+        id: v4(),
+        closed: false
       }
     ])
+  }
+
+  const changeTaskStatus = (id: string) => {
+    const selectedTaskIndex = tasks.findIndex(task => task.id === id);
+    if (selectedTaskIndex !== -1){
+      const tasksCopy = [...tasks];
+      const updatedTask = { 
+        ...tasks[selectedTaskIndex],
+        closed: !tasks[selectedTaskIndex].closed
+      };
+      tasksCopy[selectedTaskIndex] = updatedTask;
+      setTasks(tasksCopy);
+    }
   }
 
   return (
@@ -30,6 +44,8 @@ export default function Home() {
       <HomeTemplate 
         createTask={saveNewTask}
         tasks={tasks}
+        closeTask={changeTaskStatus}
+        openTask={changeTaskStatus}
       />
     </div>
   )

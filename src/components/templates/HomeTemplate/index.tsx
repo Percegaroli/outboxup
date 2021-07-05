@@ -11,9 +11,11 @@ import { NewTaskModel } from "../../../model/Task/NewTaskModel";
 interface Props {
   tasks: Array<TaskModel>
   createTask: (task: NewTaskModel) => void
+  closeTask: (id: string) => void
+  openTask: (id: string) => void 
 }
 
-const HomeTemplate = ({ tasks, createTask }: Props) => {
+const HomeTemplate = ({ tasks, createTask, closeTask, openTask }: Props) => {
   const [ isShowingNewTaskModal, setIsShowingNewTaskModal ] = useState(false);
 
   return (
@@ -26,7 +28,11 @@ const HomeTemplate = ({ tasks, createTask }: Props) => {
               Hi there.
             </Typography>
           </TitleContainer>
-          <TasksList tasks = {tasks}/>
+          <TasksList 
+            closeTask={closeTask}
+            openTask={openTask}
+            tasks = {tasks}
+          />
         </Container>
       </div>
       <Container>

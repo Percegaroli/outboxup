@@ -3,4 +3,5 @@ export interface TaskModel {
   description: string;
   date: Date;
   id: string;
+  closed: boolean;
 }
